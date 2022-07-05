@@ -76,7 +76,7 @@
 
                 </select>
             </div>
-            <button class="btn btn-success" type="submit">Speichern</button>
+
         </form>
     </div>
 

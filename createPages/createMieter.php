@@ -12,7 +12,19 @@
             min-width: 140px;
         }
     </style>
+    <?php
+    $servername = "localhost";
+    $username = "software";
+    $password = "GYdSQUW4fc0Dwh88";
+    $dbname = "berufsschule_sql";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
 </head>
 <body>
 
@@ -25,36 +37,64 @@
 <div class="container-fluid">
 
     <div class="card card-body">
-
-        <h4 class="card-title">Marke anlegen</h4>
-
-        <div class="input-group" style="margin-bottom: 10px">
-            <span class="input-group-text label">ID</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group" style="margin-bottom: 10px">
-            <span class="input-group-text label">Nachname</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group " style="margin-bottom: 10px">
-            <span class="input-group-text label">Vorname</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group " style="margin-bottom: 10px">
-            <span class="input-group-text label">Adresse</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group " style="margin-bottom: 10px">
-            <span class="input-group-text label">Geburtsdatum</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
-        <div class="input-group " style="margin-bottom: 10px">
-            <span class="input-group-text label">Führerschein</span>
-            <input type="text" class="form-control" placeholder="Username">
-        </div>
+        <form action="/input/inputMieter.php" method="post">
+            <h4 class="card-title">Marke anlegen</h4>
+            <div class="input-group" style="margin-bottom: 10px">
+                <span class="input-group-text label">Nachname</span>
+                <input type="text" class="form-control" placeholder="Nachname" name="nachname">
+            </div>
+            <div class="input-group " style="margin-bottom: 10px">
+                <span class="input-group-text label">Vorname</span>
+                <input type="text" class="form-control" placeholder="Vorname" name="vorname">
+            </div>
+            <div class="input-group " style="margin-bottom: 10px">
+                <span class="input-group-text label">Adresse</span>
+                <input type="text" class="form-control" placeholder="Adresse" name="adresse">
+            </div>
+            <div class="input-group " style="margin-bottom: 10px">
+                <span class="input-group-text label">Geburtsdatum</span>
+                <input type="text" class="form-control" placeholder="Geburtsdatum" name="geburtsdatum">
+            </div>
+            <div class="input-group " style="margin-bottom: 10px">
+                <span class="input-group-text label">Führerschein</span>
+                <input type="text" class="form-control" placeholder="Führerschein" name="fuehrerschein">
+            </div>
+            <button class="btn btn-success" type="submit">Speichern</button>
+        </form>
     </div>
     <br/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>UUID</th>
+            <th>Nachname</th>
+            <th>Vorname</th>
+            <th>Adresse</th>
+            <th>Geburtsdatum</th>
+            <th>Führerschein</th>
+        </tr>
+        </thead>
+        <tbody>
 
+        <?php
+        $sql = "SELECT uuid_mieter, name, vorname, adresse, gebdatum, führerschein_klassen FROM module_mieter";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row["uuid_mieter"] . "</td><td>" . $row["name"] . "</td><td>" . $row["vorname"]
+                    . "</td><td>" . $row["adresse"]. "</td><td>" . $row["gebdatum"] . "</td><td>"
+                    . $row["führerschein_klassen"].  "</td></tr>";
+            }
+        } else {
+            echo "0 results";
+        }
+
+        $conn->close();
+        ?>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
