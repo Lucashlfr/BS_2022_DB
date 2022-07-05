@@ -12,10 +12,8 @@
             min-width: 140px;
         }
     </style>
-
 </head>
 <body>
-
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(0,0,102)!important;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/BS_DB_2022/index.php">DB Projekt 2022</a>
@@ -40,69 +38,8 @@
         </div>
     </div>
 </nav>
-<br>
 
-<div class="container-fluid">
-
-    <div class="card card-body">
-
-        <form action="/input/inputMarke.php" method="post">
-            <h4 class="card-title">Marke anlegen</h4>
-            <div class="input-group" style="margin-bottom: 10px">
-                <span class="input-group-text label">Name</span>
-                <input type="text" class="form-control" placeholder="Name" name="name">
-            </div>
-            <div class="input-group " style="margin-bottom: 10px">
-                <span class="input-group-text label">Abkürzung</span>
-                <input type="text" class="form-control" placeholder="Abkürzung" name="abkuerzung">
-            </div>
-            <button class="btn btn-success" type="submit">Speichern</button>
-        </form>
-    </div>
-    <br/>
-
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>UUID</th>
-            <th>Name</th>
-            <th>Abkürzung</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <?php
-        $servername = "localhost";
-        $username = "software";
-        $password = "GYdSQUW4fc0Dwh88";
-        $dbname = "berufsschule_sql";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT uuid_marken, name, abkürzung FROM module_marken";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["uuid_marken"] . "</td><td>" . $row["name"] . "</td><td>" . $row["abkürzung"] . "</td></tr>";
-            }
-        } else {
-            echo "0 results";
-        }
-
-        $conn->close();
-        ?>
-        </tbody>
-    </table>
-
-</div>
-
+<?php
+echo "<h1>TEST</h1>";
+?>
 </body>
-</html>
