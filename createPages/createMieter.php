@@ -39,12 +39,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping anlegen</a></li>
+
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
@@ -54,7 +55,7 @@
 </nav>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="card card-body">
         <form action="/input/inputMieter.php" method="post">
@@ -73,7 +74,7 @@
             </div>
             <div class="input-group " style="margin-bottom: 10px">
                 <span class="input-group-text label">Geburtsdatum</span>
-                <input type="text" class="form-control" placeholder="Geburtsdatum" name="geburtsdatum">
+                <input type="date" class="form-control" placeholder="Geburtsdatum" name="geburtsdatum">
             </div>
             <div class="input-group " style="margin-bottom: 10px">
                 <span class="input-group-text label">Führerschein</span>
@@ -83,38 +84,40 @@
         </form>
     </div>
     <br/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>UUID</th>
-            <th>Nachname</th>
-            <th>Vorname</th>
-            <th>Adresse</th>
-            <th>Geburtsdatum</th>
-            <th>Führerschein</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>UUID</th>
+                <th>Nachname</th>
+                <th>Vorname</th>
+                <th>Adresse</th>
+                <th>Geburtsdatum</th>
+                <th>Führerschein</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        <?php
-        $sql = "SELECT uuid_mieter, name, vorname, adresse, gebdatum, führerschein_klassen FROM module_mieter";
-        $result = $conn->query($sql);
+            <?php
+            $sql = "SELECT uuid_mieter, name, vorname, adresse, gebdatum, führerschein_klassen FROM module_mieter";
+            $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["uuid_mieter"] . "</td><td>" . $row["name"] . "</td><td>" . $row["vorname"]
-                    . "</td><td>" . $row["adresse"]. "</td><td>" . $row["gebdatum"] . "</td><td>"
-                    . $row["führerschein_klassen"].  "</td></tr>";
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["uuid_mieter"] . "</td><td>" . $row["name"] . "</td><td>" . $row["vorname"]
+                        . "</td><td>" . $row["adresse"] . "</td><td>" . $row["gebdatum"] . "</td><td>"
+                        . $row["führerschein_klassen"] . "</td></tr>";
+                }
+            } else {
+                echo "0 results";
             }
-        } else {
-            echo "0 results";
-        }
 
-        $conn->close();
-        ?>
-        </tbody>
-    </table>
+            $conn->close();
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

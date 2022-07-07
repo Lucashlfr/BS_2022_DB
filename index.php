@@ -7,11 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <style>
-        .label {
-            min-width: 140px;
-        }
-    </style>
+
+    <?php
+    $servername = "localhost";
+    $username = "software";
+    $password = "GYdSQUW4fc0Dwh88";
+    $dbname = "berufsschule_sql";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(0,0,102)!important;">
@@ -25,12 +35,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping anlegen</a></li>
+
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
@@ -38,8 +49,66 @@
         </div>
     </div>
 </nav>
+<br>
 
-<?php
-echo "<h1>TEST</h1>";
-?>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">SQL</div>
+        <div class="card-body">
+
+            <form method="post">
+
+                <textarea class="form-control" rows="5" id="sql" name="sql" required style="margin-bottom: 5px"></textarea>
+                <button class="btn btn-success" type="submit">Submit</button>
+                <button class="btn btn-danger" type="reset">Reset</button>
+
+            </form>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="card">
+
+        <div class="card-header text-center">
+
+            <?php
+            if (isset($_POST["sql"])) {
+                echo "SQL CODE: " . $_POST["sql"];
+            }else {
+                echo "KEIN SQL";
+            }
+            ?>
+
+        </div>
+
+        <div class="card-body">
+
+            <?php
+            if (isset($_POST["sql"])) {
+                $result = $conn->query($_POST["sql"]);
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    echo "<ul>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<li>" . implode(", ", $row) . "</li>";
+                    }
+                    echo "</ul>";
+                } else {
+                    echo "0 results";
+                }
+
+
+                $conn->close();
+            }
+            ?>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 </body>
+</html>

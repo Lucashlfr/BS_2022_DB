@@ -27,12 +27,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping anlegen</a></li>
+
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
@@ -42,7 +43,7 @@
 </nav>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="card card-body">
 
@@ -61,47 +62,47 @@
     </div>
     <br/>
 
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>UUID</th>
+                <th>Name</th>
+                <th>Abkürzung</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>UUID</th>
-            <th>Name</th>
-            <th>Abkürzung</th>
-        </tr>
-        </thead>
-        <tbody>
+            <?php
+            $servername = "localhost";
+            $username = "software";
+            $password = "GYdSQUW4fc0Dwh88";
+            $dbname = "berufsschule_sql";
 
-        <?php
-        $servername = "localhost";
-        $username = "software";
-        $password = "GYdSQUW4fc0Dwh88";
-        $dbname = "berufsschule_sql";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT uuid_marken, name, abkürzung FROM module_marken";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["uuid_marken"] . "</td><td>" . $row["name"] . "</td><td>" . $row["abkürzung"] . "</td></tr>";
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
-        } else {
-            echo "0 results";
-        }
 
-        $conn->close();
-        ?>
-        </tbody>
-    </table>
+            $sql = "SELECT * FROM module_marken";
+            $result = $conn->query($sql);
 
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["uuid_marken"] . "</td><td>" . $row["name"] . "</td><td>" . $row["abkuerzung"] . "</td></tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+
+            $conn->close();
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>

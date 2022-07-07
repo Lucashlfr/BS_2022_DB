@@ -39,17 +39,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a>
-                        </li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a>
-                        </li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a>
-                        </li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a>
-                        </li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping
-                                anlegen</a></li>
+
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
@@ -59,7 +55,7 @@
 </nav>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
     <div class="card card-body">
 
@@ -70,7 +66,7 @@
                 <select type="text" class="form-control" name="modell">
                     <?php
 
-                    $sql = "SELECT uuid_modell, bezeichnung FROM module_modells";
+                    $sql = "SELECT * FROM module_modells";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -90,7 +86,7 @@
                 <select type="text" class="form-control" name="reifen">
                     <?php
 
-                    $sql = "SELECT uuid_reifen, bezeichnung, typ, hersteller FROM module_reifen";
+                    $sql = "SELECT * FROM module_reifen";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -113,35 +109,39 @@
         </form>
     </div>
     <br/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>UUID</th>
-            <th>Modell</th>
-            <th>Kennzeichen</th>
-            <th>Reifen</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="container">
 
-        <?php
+        <table class="table">
+            <thead>
+            <tr>
+                <th>UUID</th>
+                <th>Modell</th>
+                <th>Kennzeichen</th>
+                <th>Reifen</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        $sql = "SELECT uuid_auto, uuid_modell, kennzeichen, uuid_reifen FROM module_autos";
-        $result = $conn->query($sql);
+            <?php
 
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["uuid_auto"] . "</td><td>" . $row["uuid_modell"] . "</td><td>" . $row["kennzeichen"] . "</td><td>" . $row["uuid_reifen"] . "</td></tr>";
+            $sql = "SELECT * FROM module_autos, module_modells, module_reifen, module_marken WHERE module_autos.uuid_reifen = module_reifen.uuid_reifen AND module_autos.uuid_modell = module_modells.uuid_modell AND module_modells.uuid_marken = module_marken.uuid_marken";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["uuid_auto"] . "</td><td>" . $row["bezeichnung"] . "</td><td>" . $row["kennzeichen"] . "</td><td>" . $row["bezeichnung"] . "</td></tr>";
+                }
+            } else {
+                echo "0 results";
             }
-        } else {
-            echo "0 results";
-        }
 
-        $conn->close();
-        ?>
-        </tbody>
-    </table>
+            $conn->close();
+            ?>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 </body>
 </html>

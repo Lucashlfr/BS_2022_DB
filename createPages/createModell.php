@@ -41,22 +41,23 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping anlegen</a></li>
+
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
             </ul>
         </div>
     </div>
-</nav><br>
+</nav>
 <br>
 
-<div class="container-fluid">
+<div class="container">
     <div class="card card-body">
 
         <form action="/input/inputModell.php" method="post">
@@ -80,13 +81,13 @@
 
                     <?php
 
-                    $sql = "SELECT uuid_marken, name, abkürzung FROM module_marken";
+                    $sql = "SELECT * FROM module_marken";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row["uuid_marken"] . "'>" . $row["name"] . " / " . $row["abkürzung"] . "</option>";
+                            echo "<option value='" . $row["uuid_marken"] . "'>" . $row["name"] . " / " . $row["abkuerzung"] . "</option>";
                         }
                     } else {
                         echo "0 results";
@@ -96,13 +97,15 @@
 
                 </select>
             </div>
+            <button class="btn btn-success" type="submit">Speichern</button>
 
         </form>
     </div>
 
     <br/>
 
-    <table class="table">
+    <div class="container">
+    <table class="table ">
         <thead>
         <tr>
             <th>UUID</th>
@@ -115,13 +118,13 @@
         <tbody>
 
         <?php
-        $sql = "SELECT uuid_modell, uuid_marken, ausstattung, farbe, bezeichnung FROM module_modells";
+        $sql = "SELECT * FROM module_modells, module_marken WHERE module_modells.uuid_marken = module_marken.uuid_marken";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["uuid_modell"] . "</td><td>" . $row["uuid_marken"] . "</td><td>" . $row["ausstattung"] . "</td><td>" . $row["farbe"]. "</td><td>" . $row["bezeichnung"] . "</td></tr>";
+                echo "<tr><td>" . $row["uuid_modell"] . "</td><td>" . $row["ausstattung"] . "</td><td>" . $row["farbe"] . "</td><td>" . $row["bezeichnung"]. "</td><td>" . $row["name"] . "</td></tr>";
             }
         } else {
             echo "0 results";
@@ -131,7 +134,7 @@
         ?>
         </tbody>
     </table>
-
+    </div>
 </div>
 </body>
 
