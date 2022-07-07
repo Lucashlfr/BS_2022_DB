@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createReifen.php");
+header("Location: createReifen.php");
 exit();
 
 ?>

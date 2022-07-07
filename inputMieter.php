@@ -24,7 +24,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createMieter.php");
+header("Location: createMieter.php");
 exit();
 
 ?>

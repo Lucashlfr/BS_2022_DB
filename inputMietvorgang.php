@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createMietvorgang.php");
+header("Location: createMietvorgang.php");
 exit();
 
 ?>

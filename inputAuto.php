@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createAuto.php");
+header("Location: createAuto.php");
 exit();
 
 ?>

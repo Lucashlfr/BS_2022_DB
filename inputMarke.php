@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createMarke.php");
+header("Location: createMarke.php");
 exit();
 
 ?>

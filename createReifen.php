@@ -28,15 +28,15 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
 
-                        <li><a class="dropdown-item" href="/createMarke.php">1. Marke anlegen</a>
-                        <li><a class="dropdown-item" href="/createModell.php">2. Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createReifen.php">3. Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createAuto.php">4. Auto anlegen</a></li></li>
-                        <li><a class="dropdown-item" href="/createMieter.php">5. Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createMietvorgang.php">6. Mapping anlegen</a></li>
+                        <li><a class="dropdown-item" href="createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
-                <a class="nav-link text-white" href="/auswertung.php" role="button">Auswerten</a>
+                <a class="nav-link text-white" href="auswertung.php" role="button">Auswerten</a>
             </ul>
         </div>
     </div>
@@ -46,7 +46,7 @@
 <div class="container">
 
     <div class="card card-body">
-        <form action="/inputReifen.php" method="post">
+        <form action="inputReifen.php" method="post">
             <h4 class="card-title">Reifen anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Bezeichnung</span>
