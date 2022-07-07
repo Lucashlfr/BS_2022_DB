@@ -1,4 +1,8 @@
 # BS_2022_DB [Helfer / Geiser]
+
+## DOWNLOAD der PHP-FILES
+<a href="https://github.com/Lucashlfr/BS_2022_DB/releases/tag/Release">HERUNTERLADEN</a>
+
 ## Anleitung zum erstellen eines Mietvorgangs
 ![img_3.png](img_3.png)<br/>
 Wichtig: Befolgen Sie strickt die Reihenfolge!
