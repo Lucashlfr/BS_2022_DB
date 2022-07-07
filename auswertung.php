@@ -43,7 +43,7 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(0,0,102)!important;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/BS_DB_2022/index.php">DB Projekt 2022</a>
+        <a class="navbar-brand" href="/index.php">DB Projekt 2022</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,15 +53,15 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
 
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">1. Marke anlegen</a>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">2. Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">3. Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">4. Auto anlegen</a></li></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">5. Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createPages/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/createPages/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createPages/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createPages/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/createPages/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
-                <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
+                <a class="nav-link text-white" href="/auswertung.php" role="button">Auswerten</a>
             </ul>
         </div>
     </div>
