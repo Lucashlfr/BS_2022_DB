@@ -59,7 +59,7 @@
 
     <div class="card card-body">
 
-        <form action="/php/inputnput/inputAuto.php" method="post">
+        <form action="/inputAuto.php" method="post">
             <h4 class="card-title">Auto anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Modell</span>

@@ -46,7 +46,7 @@
 <div class="container">
 
     <div class="card card-body">
-        <form action="/php/inputnput/inputReifen.php" method="post">
+        <form action="/inputReifen.php" method="post">
             <h4 class="card-title">Reifen anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Bezeichnung</span>

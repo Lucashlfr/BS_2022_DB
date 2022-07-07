@@ -60,7 +60,7 @@
     <div class="card card-body">
 
         <h4 class="card-title">Mietvorgang anlegen</h4>
-        <form action="/php/inputnput/inputMietvorgang.php" method="post">
+        <form action="/inputMietvorgang.php" method="post">
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Auto</span>
                 <select type="text" class="form-control" name="auto">

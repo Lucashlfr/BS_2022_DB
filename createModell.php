@@ -60,7 +60,7 @@
 <div class="container">
     <div class="card card-body">
 
-        <form action="/php/inputnput/inputModell.php" method="post">
+        <form action="/inputModell.php" method="post">
             <h4 class="card-title">Modell anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Ausstattung</span>

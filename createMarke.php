@@ -47,7 +47,7 @@
 
     <div class="card card-body">
 
-        <form action="/php/inputnput/inputMarke.php" method="post">
+        <form action="/inputMarke.php" method="post">
             <h4 class="card-title">Marke anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Name</span>
