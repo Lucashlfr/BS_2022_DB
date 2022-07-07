@@ -40,11 +40,16 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createAuto.php">Auto anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping anlegen</a></li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createModell.php">Modell anlegen</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createReifen.php">Reifen anlegen</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMarke.php">Marke anlegen</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMieter.php">Mieter anlegen</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/BS_DB_2022/createPages/createMietvorgang.php">Mapping
+                                anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/BS_DB_2022/auswertung.php" role="button">Auswerten</a>
