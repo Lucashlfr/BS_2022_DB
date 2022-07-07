@@ -32,7 +32,7 @@
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(0,0,102)!important;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/index.php">DB Projekt 2022</a>
+        <a class="navbar-brand" href="index.php">DB Projekt 2022</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,12 +42,12 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
 
-                        <li><a class="dropdown-item" href="/createPages/createMarke.php">1. Marke anlegen</a>
-                        <li><a class="dropdown-item" href="/createPages/createModell.php">2. Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createReifen.php">3. Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createAuto.php">4. Auto anlegen</a></li></li>
-                        <li><a class="dropdown-item" href="/createPages/createMieter.php">5. Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/auswertung.php" role="button">Auswerten</a>
@@ -60,7 +60,7 @@
 <div class="container">
     <div class="card card-body">
 
-        <form action="/input/inputModell.php" method="post">
+        <form action="/php/inputnput/inputModell.php" method="post">
             <h4 class="card-title">Modell anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
                 <span class="input-group-text label">Ausstattung</span>

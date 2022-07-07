@@ -23,7 +23,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createPages/createModell.php");
+header("Location: /createModell.php");
 exit();
 
 ?>

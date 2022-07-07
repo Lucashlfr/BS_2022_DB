@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO module_reifen (uuid_reifen, bezeichnung, typ, hersteller) VALUES ('" . uniqid() ."', '" . $_POST["bezeichnung"]. "', '" . $_POST["typ"] . "', '" . $_POST["hersteller"]."')";
+$sql = "INSERT INTO module_map_auto_mieter (uuid_mietvorgang, uuid_auto, uuid_mieter) VALUES ('" . uniqid() ."', '" . $_POST["auto"]. "', '" . $_POST["mieter"] .  "')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createPages/createReifen.php");
+header("Location: /createMietvorgang.php");
 exit();
 
 ?>

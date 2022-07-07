@@ -30,7 +30,7 @@
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(0,0,102)!important;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/index.php">DB Projekt 2022</a>
+        <a class="navbar-brand" href="index.php">DB Projekt 2022</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,12 +40,12 @@
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">Anlegen</a>
                     <ul class="dropdown-menu">
 
-                        <li><a class="dropdown-item" href="/createPages/createMarke.php">1. Marke anlegen</a>
-                        <li><a class="dropdown-item" href="/createPages/createModell.php">2. Modell anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createReifen.php">3. Reifen anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createAuto.php">4. Auto anlegen</a></li></li>
-                        <li><a class="dropdown-item" href="/createPages/createMieter.php">5. Mieter anlegen</a></li>
-                        <li><a class="dropdown-item" href="/createPages/createMietvorgang.php">6. Mapping anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createMarke.php">1. Marke anlegen</a>
+                        <li><a class="dropdown-item" href="/createModell.php">2. Modell anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createReifen.php">3. Reifen anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createAuto.php">4. Auto anlegen</a></li></li>
+                        <li><a class="dropdown-item" href="/createMieter.php">5. Mieter anlegen</a></li>
+                        <li><a class="dropdown-item" href="/createMietvorgang.php">6. Mapping anlegen</a></li>
                     </ul>
                 </li>
                 <a class="nav-link text-white" href="/auswertung.php" role="button">Auswerten</a>
@@ -59,83 +59,78 @@
 
     <div class="card card-body">
 
-        <h4 class="card-title">Mietvorgang anlegen</h4>
-        <form action="/input/inputMietvorgang.php" method="post">
+        <form action="/php/inputnput/inputAuto.php" method="post">
+            <h4 class="card-title">Auto anlegen</h4>
             <div class="input-group" style="margin-bottom: 10px">
-                <span class="input-group-text label">Auto</span>
-                <select type="text" class="form-control" name="auto">
-
+                <span class="input-group-text label">Modell</span>
+                <select type="text" class="form-control" name="modell">
                     <?php
 
-                    $sql = "SELECT * FROM module_autos, module_modells, module_reifen, module_marken WHERE module_autos.uuid_modell = module_modells.uuid_modell AND module_modells.uuid_marken = module_marken.uuid_marken AND module_autos.uuid_reifen = module_reifen.uuid_reifen";
+                    $sql = "SELECT * FROM module_modells";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row["uuid_auto"] . "'>" .
-                                $row["name"] . ' ' . $row["bezeichnung"] . ' | ' .
-                                $row["kennzeichen"] . ' | ' .
-                                $row["bezeichnung"] . "</option>";
+                            echo "<option value='" . $row["uuid_modell"] . "'>" . $row["bezeichnung"] . "</option>";
                         }
                     } else {
                         echo "0 results";
                     }
 
                     ?>
-
                 </select>
             </div>
             <div class="input-group " style="margin-bottom: 10px">
-                <span class="input-group-text label">Mieter</span>
-                <select type="text" class="form-control" name="mieter">
-
+                <span class="input-group-text label">Reifen</span>
+                <select type="text" class="form-control" name="reifen">
                     <?php
 
-                    $sql = "SELECT * FROM module_mieter";
+                    $sql = "SELECT * FROM module_reifen";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row["uuid_mieter"] . "'>" .
-                                $row["name"] . ' | ' .
-                                $row["vorname"] . ' | ' .
-                                $row["adresse"] . "</option>";
+                            echo "<option value='" . $row["uuid_reifen"] . "'>" . $row["bezeichnung"] . ' / ' . $row["typ"] . ' / ' . $row["hersteller"] . "</option>";
                         }
                     } else {
                         echo "0 results";
                     }
 
                     ?>
-
                 </select>
             </div>
+            <div class="input-group " style="margin-bottom: 10px">
+                <span class="input-group-text label">Kennzeichen</span>
+                <input type="text" class="form-control" placeholder="Kennzeichen" name="kennzeichen">
+            </div>
             <button class="btn btn-success" type="submit">Speichern</button>
-
         </form>
     </div>
     <br/>
     <div class="container">
+
         <table class="table">
             <thead>
             <tr>
                 <th>UUID</th>
-                <th>Auto</th>
-                <th>Mieter</th>
+                <th>Modell</th>
+                <th>Kennzeichen</th>
+                <th>Reifen</th>
             </tr>
             </thead>
             <tbody>
 
             <?php
-            $sql = "SELECT * FROM module_map_auto_mieter, module_mieter, module_autos, module_modells WHERE module_map_auto_mieter.uuid_mieter = module_mieter.uuid_mieter AND module_autos.uuid_auto = module_map_auto_mieter.uuid_auto AND module_autos.uuid_modell = module_modells.uuid_modell;";
+
+            $sql = "SELECT * FROM module_autos, module_modells, module_reifen, module_marken WHERE module_autos.uuid_reifen = module_reifen.uuid_reifen AND module_autos.uuid_modell = module_modells.uuid_modell AND module_modells.uuid_marken = module_marken.uuid_marken";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["uuid_mietvorgang"] . "</td><td>" . $row["kennzeichen"] . " " . $row["bezeichnung"] . "</td><td>" . $row["name"] . " " . $row["vorname"]
-                        . "</td></tr>";
+                    echo "<tr><td>" . $row["uuid_auto"] . "</td><td>" . $row["bezeichnung"] . "</td><td>" . $row["kennzeichen"] . "</td><td>" . $row["bezeichnung"] . "</td></tr>";
                 }
             } else {
                 echo "0 results";
@@ -145,6 +140,7 @@
             ?>
             </tbody>
         </table>
+
     </div>
 </div>
 </body>

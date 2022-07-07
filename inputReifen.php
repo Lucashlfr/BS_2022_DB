@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO module_autos (uuid_auto, uuid_modell, kennzeichen, uuid_reifen) VALUES ('" . uniqid() ."', '" . $_POST["modell"]. "', '" . $_POST["kennzeichen"] . "', '" . $_POST["reifen"] ."')";
+$sql = "INSERT INTO module_reifen (uuid_reifen, bezeichnung, typ, hersteller) VALUES ('" . uniqid() ."', '" . $_POST["bezeichnung"]. "', '" . $_POST["typ"] . "', '" . $_POST["hersteller"]."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -22,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createPages/createAuto.php");
+header("Location: /createReifen.php");
 exit();
 
 ?>

@@ -12,9 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO module_mieter (uuid_mieter, name, vorname, adresse, gebdatum, führerschein_klassen) VALUES ('"
-    . uniqid() ."', '" . $_POST["nachname"]. "', '" . $_POST["vorname"] . "', '" . $_POST["adresse"]
-    . "', '" . $_POST["geburtsdatum"] . "', '" . $_POST["fuehrerschein"] ."')";
+$sql = "INSERT INTO module_marken (uuid_marken, name, abkuerzung) VALUES ('" . uniqid() ."', '" . $_POST["name"]. "', '" . $_POST["abkuerzung"] ."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
@@ -24,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /createPages/createMieter.php");
+header("Location: /createMarke.php");
 exit();
 
 ?>
