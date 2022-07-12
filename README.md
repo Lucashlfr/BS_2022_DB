@@ -28,4 +28,4 @@ Wichtig: Befolgen Sie strickt die Reihenfolge!
 ![img.png](img.png)
 
 ## Relationsschreibweise
-![img_1.png](img_1.png)
+![grafik](https://user-images.githubusercontent.com/59049422/178511064-f81dcccf-a934-49fd-8ec7-79b861ddaca9.png)
